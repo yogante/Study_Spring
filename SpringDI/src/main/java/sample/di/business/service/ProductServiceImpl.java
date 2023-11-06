@@ -1,8 +1,9 @@
-package main.java.sample.di.business.service;
+package sample.di.business.service;
 
-import org.graalvm.compiler.lir.CompositeValue.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import main.java.sample.di.business.domain.Product;
+import sample.di.business.domain.Product;
 
 @Component
 public class ProductServiceImpl implements ProductService {
