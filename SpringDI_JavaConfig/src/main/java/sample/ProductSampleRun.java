@@ -1,8 +1,9 @@
 package sample;
 
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import sample.config.AppConfig;
 import sample.di.business.domain.Product;
 import sample.di.business.service.ProductService;
 
@@ -15,15 +16,13 @@ public class ProductSampleRun {
 
     @SuppressWarnings("resource")
 	public void execute() {
-    	// BeanFactoryはApplicationContextに書替えてもOK
-        BeanFactory ctx = new ClassPathXmlApplicationContext(
-                "/sample/config/applicationContext.xml");
+    	
+    	ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         ProductService productService = ctx.getBean(ProductService.class);
 
         productService.addProduct(new Product("ホチキス", 100));
 
         Product product = productService.findByProductName("ホチキス");
         System.out.println(product);
-
     }
 }

@@ -1,6 +1,6 @@
 package sample;
 
-import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import sample.di.business.domain.Product;
@@ -15,8 +15,7 @@ public class ProductSampleRun {
 
     @SuppressWarnings("resource")
 	public void execute() {
-    	// BeanFactoryはApplicationContextに書替えてもOK
-        BeanFactory ctx = new ClassPathXmlApplicationContext(
+    	ApplicationContext ctx = new ClassPathXmlApplicationContext(
                 "/sample/config/applicationContext.xml");
         ProductService productService = ctx.getBean(ProductService.class);
 
@@ -24,6 +23,5 @@ public class ProductSampleRun {
 
         Product product = productService.findByProductName("ホチキス");
         System.out.println(product);
-
     }
 }
