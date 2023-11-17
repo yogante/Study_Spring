@@ -21,4 +21,10 @@ public class CustomerListController {
         model.addAttribute("customer", customer);
         return "customer/detail";
     }
+	
+    @RequestMapping(value = "/review", method = GET)
+    public String showReview() {
+        return "customer/edit/review";
+    }
+
 }
